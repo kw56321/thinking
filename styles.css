@@ -1,0 +1,38 @@
+body {
+  font-family: 'Helvetica';
+  font-size: 13px;
+}
+
+.essays{
+  width: 60%;
+  margin: auto;
+  margin: 0;
+  padding: 20px 20% 20px 20%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 21px;
+  font-family: 'Helvetica';
+  z-index: 3;
+  background-color: white;
+}
+
+.button {
+  text-decoration: underline;
+  color: blue;
+  /* display: inline; */
+}
+
+.filler {
+  visibility: hidden;
+  z-index: 1;
+}
+
+.lower_box {
+  /*visibility: hidden;*/
+  color: white;
+  padding: 10px;
+  z-index: 2
+}

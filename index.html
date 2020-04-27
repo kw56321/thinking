@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Thesis</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<p class="essays" id="essays">As we know, everything in the world is connected in one way or another. So people often think in series when they encounter problems. This mode of thinking is to associate one thing with another, and then associate the new thing with the next. This is an <span>endless</span> cycle of thinking. My thesis is a visual representation of the <span>interconnectedness</span> of the world and a mind map that can attract people to stop and digest the information they perceive. I hope my thesis can inspire people to pay attention to the exploratory style of their thinking process and cultivate people's <span>thinking</span> habits and abilities. And can guide everyone to think about what is thinking. My design <span>inspiration</span> comes from “impossible bottle”, a seemingly small structure that contains this endless amount of information, just like our brain. If you think about everything habitually, the whole world is in your head.
+</p>
+
+<svg id="lines_layer" style="position: absolute; z-index: 5; pointer-events: none;"></svg>
+<!-- <div id="lower" style="width: 100%; z-index: 1; display: flex;">
+	<div style="display: flex; flex-direction: column; flex: 1">
+		<div style="width: 100%; min-height: 220px; display: flex;">
+			<div class="filler" style="flex: 0.4;"></div>
+			<div class="lower_box" id="linkbox_1" style="flex: 0.7; background-color: red;">box 1</div>
+			<div class="filler" style="flex: 0.2;"></div>
+			<div class="lower_box" id="linkbox_2" style="flex: 1; background-color: yellow;">box 7</div>
+			<div class="lower_box" id="linkbox_3" style="flex: 1.5; background-color: red;">box3</div>
+		</div>
+		<div style="width: 100%; min-height: 250px; display: flex;">
+			<div class="filler" style="flex: 0.1; background-color: pink;">2</div>
+			<div style="flex: 1; height: 100%; display: flex; flex-direction: column;">
+				<div class="lower_box" id="linkbox_5" style="flex: 1; background-color: red;">box 4</div>	
+				<div class="filler" style="flex: 0.35; background-color: pink;">2</div>
+			</div>
+			<div class="lower_box" id="linkbox_6" style="flex: 1.3; background-color: green;">box 2</div>
+			<div class="lower_box" id="linkbox_7" style="flex: 1; background-color: red;">box 4</div>
+			<div class="lower_box" id="linkbox_8" style="flex: 1.2; background-color: yellow;">box 6</div>
+			<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+		</div>
+		<div style="width: 100%; min-height: 440px; display: flex;">
+			<div class="lower_box" id="linkbox_9" style="flex: 0.8; background-color: orange;">box 5</div>
+			<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+			<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+			<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+			<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+		</div>
+	</div>
+	<div style="display: flex; flex: 2">
+		<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+		<div style="display: flex; flex: 2; flex-direction: column;">
+			<div class="filler" style="flex: 1.5; background-color: pink;">2</div>
+			<div class="lower_box" id="linkbox_10" style="flex: 2; background-color: red;">box 4</div>
+			<div class="filler" style="flex: 8; background-color: pink;">2</div>
+		</div>
+		<div style="display: flex; flex: 2.6; flex-direction: column;">
+			<div class="filler" style="flex: 2.7; background-color: pink;">2</div>
+			<div class="lower_box" id="linkbox_11" style="flex: 1; background-color: red;">box 4</div>
+		</div>
+		<div class="lower_box" style="flex: 1; background-color: red;">2</div>
+	</div>
+</div> -->
+
+<div id="lower" style="width: 95%; z-index: 1; display: flex; flex-direction: column;">
+<div class="top_level_container" style="flex: 1; display: flex; width: 100%; /*position: absolute; */flex-direction: column; height: 580px;">
+	<div style="display: flex; width: 100%; flex: 7;">
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div class="filler" style="flex: 1.2; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_1" style="flex: 5; background-color: red;"></div>
+		</div>
+		<div class="filler" style="flex: 1.5"></div>
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 1.45; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_8" style="flex: 4; background-color: red;"></div>
+		</div>
+		<div style="display: flex; flex: 2; flex-direction: column;">
+			<div class="lower_box" id="linkbox_3" style="flex: 3; background-color: green"></div>
+			<div class="filler" style="flex: 1.3; visibility: hidden;"></div>
+		</div>
+		<div class="lower_box" id="linkbox_9"style="flex: 2.2; background-color: blue;"></div>
+	</div>
+
+	<div style="display: flex; width: 100%; flex: 6;">
+		<div class="filler" style="flex: 1.34; visibility: hidden;"></div>
+		<div style="flex: 4.8; display: flex; flex-direction: column;">
+			<div class="lower_box" id="linkbox_2" style="flex: 2; background-color: blue"></div>
+			<div class="filler" style="flex: 1; visibility: hidden;"></div>
+		</div>
+		<div class="filler" style="flex: 1.39; visibility: hidden;"></div>
+		<div class="lower_box" id="linkbox_4" style="flex: 2; background-color: pink; transform: translate(-63px, 0)"></div>
+		<div style="flex: 4; display: flex; flex-direction: column;">
+			<div class="filler" style="flex: 0.6; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_7" style="flex: 3; background-color: purple;"></div>
+			<div class="filler" style="flex: 1; visibility: hidden;"></div>
+		</div>
+	</div>
+</div>
+<div class="top_level_container" style="flex: 1; display: flex; width: 100%; /*position: absolute; */flex-direction: column; height: 580px;">
+	<div style="display: flex; width: 100%; flex: 7;">
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 1.2; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_5" style="flex: 5; background-color: red; transform: translateY(0px) translateX(53px);"></div>
+		</div>
+		<div style="flex: 1.5"></div>
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 1.45; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_11" style="flex: 4; background-color: red; transform: translate(0px, -300px)"></div>
+		</div>
+		<div style="display: flex; flex: 2; flex-direction: column;">
+			<div class="lower_box" id="linkbox_14" style="flex: 3; background-color: green"></div>
+			<div style="flex: 1.3; visibility: hidden;"></div>
+		</div>
+		<div style="flex: 1.39"></div>
+	</div>
+
+	<div style="display: flex; width: 100%; flex: 6;">
+		<div class="lower_box" id="linkbox_10" style="flex: 2.34; background-color: red; transform: translate(0, -500px);"></div>
+		<div style="flex: 4.8; display: flex; flex-direction: column;">
+			<div class="lower_box" id="linkbox_6" style="flex: 2; background-color: blue; transform: translate(90px, -90px);"></div>
+			<div style="flex: 1; visibility: hidden;"></div>
+		</div>
+		<div style="flex: 1.39; visibility: hidden;"></div>
+		<div class="lower_box" id="linkbox_12" style="flex: 2; background-color: pink; transform: translate(-80px, -100px);"></div>
+		<div style="flex: 4; display: flex; flex-direction: column;">
+			<div style="flex: 0.6; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_13" style="flex: 3; background-color: purple; transform: translate(0, -100px);"></div>
+			<div style="flex: 1; visibility: hidden;"></div>
+		</div>
+	</div>
+</div>
+<div class="top_level_container" style="flex: 1; display: flex; width: 100%; position: absolute; top: 100px; flex-direction: column; height: 750px;">
+	<div style="flex: 3.5; display: flex;">
+		<div style="flex: 4; visibility: hidden;"></div>
+		<div class="lower_box" id="linkbox_15" style="flex: 1; background-color: aqua;"></div>
+	</div>
+	<div style="display: flex; width: 100%; flex: 7;">
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 1.2; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_18" style="flex: 5; background-color: aqua;"></div>
+		</div>
+		<div style="flex: 1.5"></div>
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 2.4; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_20" style="flex: 4; background-color: aqua;"></div>
+		</div>
+		<div style="display: flex; flex: 2; flex-direction: column;">
+			<div class="lower_box" id="linkbox_19" style="flex: 3; background-color: aqua"></div>
+			<div style="flex: 1.3; visibility: hidden;"></div>
+		</div>
+		<div style="flex: 1.39"></div>
+	</div>
+
+	<div style="display: flex; width: 100%; flex: 6;">
+		<div style="flex: 1.34; visibility: hidden;"></div>
+		<div style="flex: 4.8; display: flex; flex-direction: column;">
+			<div style="flex: 1; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_21" style="flex: 2; background-color: aqua"></div>
+			<div style="flex: 1; visibility: hidden;"></div>
+		</div>
+		<div style="flex: 1.39; visibility: hidden;"></div>
+		<div class="lower_box" id="linkbox_17" style="flex: 2; background-color: aqua"></div>
+		<div style="flex: 0.6; visibility: hidden;"></div>
+		<div style="flex: 4; display: flex; flex-direction: column;">
+			<div style="flex: 0.6; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_16" style="flex: 3; background-color: aqua;"></div>
+			<div style="flex: 1; visibility: hidden;"></div>
+		</div>
+	</div>
+</div>
+<div class="top_level_container" style="flex: 1; display: flex; width: 100%; position: absolute; top: 150px; flex-direction: column; height: 650px;">
+	<div style="display: flex; width: 100%; flex: 7;">
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 1.2; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_28" style="flex: 5; background-color: red;"></div>
+		</div>
+		<div style="flex: 1.5; visibility: hidden;"></div>
+		<div style="display: flex; flex: 3; flex-direction: column;">
+			<div style="flex: 1.45; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_24" style="flex: 4; background-color: red;"></div>
+		</div>
+		<div style="display: flex; flex: 2; flex-direction: column;">
+			<div class="lower_box" id="linkbox_25" style="flex: 3; background-color: green"></div>
+			<div style="flex: 1.3; visibility: hidden;"></div>
+		</div>
+		<div style="flex: 1.39; visibility: hidden;"></div>
+	</div>
+
+	<div style="display: flex; width: 100%; flex: 6;">
+		<div style="flex: 1.34; visibility: hidden;"></div>
+		<div style="flex: 4.8; display: flex; flex-direction: column;">
+			<div class="lower_box" id="linkbox_23" style="flex: 2; background-color: blue"></div>
+			<div style="flex: 1; visibility: hidden;"></div>
+		</div>
+		<div style="flex: 1.39; visibility: hidden;"></div>
+		<div class="lower_box" id="linkbox_22" style="flex: 2; background-color: pink"></div>
+		<div style="flex: 4; display: flex; flex-direction: column;">
+			<div style="flex: 0.6; visibility: hidden;"></div>
+			<div class="lower_box" id="linkbox_26" style="flex: 3; background-color: purple;"></div>
+			<div style="flex: 1; visibility: hidden;"></div>
+		</div>
+	</div>
+	<div style="display: flex; flex: 4.5">
+		<div style="flex: 0.8; visibility: hidden;"></div>
+		<div class="lower_box"id="linkbox_27" style="flex: 0.5; background-color: aqua"></div>
+		<div style="flex: 1; visibility: hidden;"></div>
+	</div>
+</div>
+</div>
+</body>
+<!-- <script src="textgrab.js"></script> -->
+<script src="upper_scripts.js"></script>
+<script src="scripts.js"></script>
+</html>
