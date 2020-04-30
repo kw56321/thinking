@@ -722,6 +722,9 @@ let singleWordSpans = splittedEssayHTML.map(token => {
   if (token.startsWith("<span")) {
     return token;
   }
+  else if (token.startsWith("<p")) {
+    return token;
+  }
   else {
     return `<span class="upper_key_candidate">${token}</span>`;
   }
