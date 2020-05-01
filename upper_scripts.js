@@ -562,6 +562,11 @@ function getParagraphFromJson(json) {
   let contentRaw = json["parse"]["text"]["*"];
   let contentHTML = parser.parseFromString(contentRaw, "text/html");
   let paragraphs = contentHTML.querySelectorAll("p");
+  for (let i = 0; i < paragraphs.length; i++) {
+    if (!isParagraphBorked(paragraphs[i].innerText)) {
+      return paragraphs[i].innerText;
+    }
+  }
   return paragraphs[0].innerText;
 }
 
@@ -672,7 +677,7 @@ function loadNextPage(lastBox, lastBoxColor) {
         controller.abort();
         console.log(urlToLoad)
         throw new Error("Fetch timed out");
-      }, 1000);
+      }, 2000);
       fetch(urlToLoad, {signal}).then(response => {
         clearTimeout(timeoutId);
         if (response.ok) {
@@ -681,7 +686,7 @@ function loadNextPage(lastBox, lastBoxColor) {
           throw new Error('Network response was not ok.')
         }
       }).then(json => {
-        if (isJsonBorked(json, word)) {
+        if (isJsonBorked(json, word) || word === "the") {
           console.log("bad json", word);
           loadNextPage(lastBox, lastBoxColor);
         } else {
