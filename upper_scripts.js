@@ -749,20 +749,6 @@ essayBox.innerHTML = singleWordSpans.join(" ");
 essaySpans = Array.from(essayBox.getElementsByClassName("upper_key_candidate"));
 
 
-// with fetch
-fetch(`http://www.whateverorigin.org/get?url=${encodeURIComponent('https://wikipedia.com')}`)
-.then(response => {
-  if (response.ok) return response.json()
-  throw new Error('Network response was not ok.')
-})
-.then(data => console.log(data.contents))
-.catch(err => {
-  console.log(err);
-  // window.alert("err");
-
-})
-
-
 // insertFirstLayer();
 genTopTextBoxes();
 // setInterval(chooseNextBox, 1000);
