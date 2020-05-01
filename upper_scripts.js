@@ -424,12 +424,16 @@ function invertColor(rgb) {
 }
 
 function isJsonBorked(json, word) {
-  var isContentsNull = json.contents === null
-  var wikiDom = stringToHTML(json.contents);
-  var isMissingTag = wikiDom.getElementsByTagName("p").length == 0
-  var isSameWord = word == lastWord
-  var isBorked = isContentsNull || isMissingTag || isSameWord
-  return isBorked
+  // var isContentsNull = json.contents === null
+  // var wikiDom = stringToHTML(json.contents);
+  // var isMissingTag = wikiDom.getElementsByTagName("p").length == 0
+  // var isSameWord = word == lastWord
+  // var isBorked = isContentsNull || isMissingTag || isSameWord
+  let parser = new DOMParser();
+  let contentRaw = json["parse"]["text"]["*"];
+  let contentHTML = parser.parseFromString(contentRaw, "text/html");
+  let paragraphs = contentHTML.querySelectorAll("p");
+  return paragraphs.length == 0
 }
 
 var slotTakenObject = {}
@@ -549,11 +553,16 @@ function chopParagraph(paragraph) {
 }
 
 function getParagraphFromJson(json) {
-  var wikiDom = stringToHTML(json.contents);
-  var paragraph = Array.from(wikiDom.getElementsByTagName("p"))
-    .map(p => p.innerText)
-    .join(" ")
-  return paragraph
+  // var wikiDom = stringToHTML(json.contents);
+  // var paragraph = Array.from(wikiDom.getElementsByTagName("p"))
+  //   .map(p => p.innerText)
+  //   .join(" ")
+  // return paragraph
+  let parser = new DOMParser();
+  let contentRaw = json["parse"]["text"]["*"];
+  let contentHTML = parser.parseFromString(contentRaw, "text/html");
+  let paragraphs = contentHTML.querySelectorAll("p");
+  return paragraphs[0].innerText;
 }
 
 function drawLine(x1, y1, x2, y2) {
@@ -631,7 +640,8 @@ function loadNextPage(lastBox, lastBoxColor) {
   }
 
   // console.log("word = " + word)
-  urlToLoad = `https://api.allorigins.win/get?url=${encodeURIComponent('https://en.wikipedia.org/wiki/' + word)}`
+  // urlToLoad = `http://www.whateverorigin.org/get?url=${encodeURIComponent('https://en.wikipedia.org/wiki/' + word)}`
+  urlToLoad=`https://en.wikipedia.org/w/api.php?action=parse&format=json&origin=*&page=${word}`
 
 
   let controller = new AbortController();
@@ -660,8 +670,9 @@ function loadNextPage(lastBox, lastBoxColor) {
       console.log("cache miss");
       let timeoutId = setTimeout(() => {
         controller.abort();
+        console.log(urlToLoad)
         throw new Error("Fetch timed out");
-      }, 500);
+      }, 1000);
       fetch(urlToLoad, {signal}).then(response => {
         clearTimeout(timeoutId);
         if (response.ok) {
@@ -733,6 +744,18 @@ essayBox.innerHTML = singleWordSpans.join(" ");
 essaySpans = Array.from(essayBox.getElementsByClassName("upper_key_candidate"));
 
 
+// with fetch
+fetch(`http://www.whateverorigin.org/get?url=${encodeURIComponent('https://wikipedia.com')}`)
+.then(response => {
+  if (response.ok) return response.json()
+  throw new Error('Network response was not ok.')
+})
+.then(data => console.log(data.contents))
+.catch(err => {
+  console.log(err);
+  // window.alert("err");
+
+})
 
 
 // insertFirstLayer();
